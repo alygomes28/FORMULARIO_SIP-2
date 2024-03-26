@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário - Ultracom</title>
+
+    
+    
+    <!-- Adicionando html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Adicionando html2canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Estilos Locais -->
+    <link rel="stylesheet" href="Estilos/style.css">
+
+</head>
+<body id="formulario">
+    <header>
+        <div class="container">
+            <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <img src="Imagens/MARCA-ULTRACOM-02.png" alt="logo" width="150" height="60">
+                <h5>FORMULÁRIO SIP</h5>
+            </nav> 
+        </div> 
+    </header>
+
+    <main>
+        <div class="container">
+            <form class="col-sm-12" >                         
+                <div class="col-sm-12">
+                    <label for="inputEmail4" class="form-label">CLIENTE</label>
+                    <input type="text" class="form-control" id="Nome" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 ip">
+                        <label for="IpdeOrigem" class="form-label">IP DE ORIGEM</label>
+                        <input type="text" class="form-control" id="inputIPdeOrigem" required>
+                    </div>
+                    <div class="col-6 proxy">
+                        <label for="Proxy" class="form-label">PROXY DE AUTENTICAÇÃO E SINALIZAÇÃO PORTA UDP</label>
+                        <input type="text" class="form-control" id="Nome" required>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <h4 class="col-4"><i class="bi bi-gear-fill"></i> CONFIGURAÇÕES
+                        <button class="btn btn-outline-primary bi bi-plus-circle botao_add no-print" type="button" value="teste" id="click">
+                            Adicionar
+                        </button>
+                    </h4>
+                    
+                
+                </div>
+                
+
+                <div class="conta_cli" id="config">
+                    <!-- Dados Rota -->
+                    <div class="row Card-info col-6 col-sm-12">
+                        <div class="col-4 rota">
+                            <label for="server" class="form-label bi bi-diagram-3"> TIPO DE ROTA</label>
+                            <input type="text" class="form-control" id="server" required>
+                        </div>
+                        <div class="col-4 server">
+                            <label for="server" class="form-label bi bi-hdd-network"> SERVER</label>
+                            <input type="text" class="form-control" id="server" required>
+                        </div>
+                        <div class="col-4 techprefix">
+                            <label for="techprefix" class="form-label bi bi-database-fill-up"> TECHPREFIX</label>
+                            <input type="text" class="form-control" id="techprefix" required>
+                        </div>
+                        
+                          <div class="col-6 form-check com_classificador">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                            <label class="form-check-label" for="flexCheckDefault">
+                              SEM CLASSIFICADOR
+                            </label>
+                          </div>
+
+                          <div class="col-6 form-check com_classificador">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                            <label class="form-check-label" for="flexCheckDefault">
+                              COM CLASSIFICADOR
+                            </label>
+                          </div>
+
+                        <div class="painel">
+                            <div>
+                                <h6>PAINEL PARA ACOMPANHAR O GASTO</h6>
+                                <br>
+                                <div class="col-md-12">
+                                    <label for="usuario nome" class="form-label bi bi-link"> URL</label>
+                                    <input type="text" class="form-control" id="usuario" disabled value="http://181.191.206.175:8080/SipPulsePortal/pages/login/login.jsf">
+                                </div><!--col-md-12-->
+                            </div>
+                            <div class="row usuario">
+                                <div class="col-md-6 nome_usuario">
+                                    <label for="usuario nome" class="form-label bi bi-person"> NOME DE USUÁRIO</label>
+                                    <input type="text" class="form-control" id="usuario" required>
+                                </div><!--col-md-12-->
+                                <div class="col-md-6 senha">
+                                    <label for="senha" class="form-label bi bi-key"> SENHA DE ACESSO</label>
+                                    <input type="text" class="form-control" id="senha" required>
+                                </div><!--col-md-12 Senha-->
+                            </div><!--usuario-->
+                        </div><!--painel-->
+                    </div><!--Card-info-->
+                </div><!--conta_cli-->
+            </form><!--row g-3-->
+        </div><!--container-->
+
+        <div class="page-break"></div>
+        <button type="button" class="btn btn-success no-print" id="generate-pdf">Gerar PDF</button>
+    </main>
+
+    <footer class="py-5 text-center">
+        <p>&copy; Ultracom. Todos os direitos reservados.</p>
+    </footer>
+
+    
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <!-- Seu script JavaScript personalizado -->
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
